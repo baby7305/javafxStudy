@@ -18,6 +18,11 @@ public class Main extends Application {
 		button = new Button();
 		button.setText("Click me");
 
+		button.setOnAction(x -> {
+			System.out.println("lambda clilked");
+			System.out.println("detected");
+		});
+
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
 
