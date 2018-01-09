@@ -1,4 +1,6 @@
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
@@ -17,6 +19,13 @@ public class Main extends Application {
 
 		button = new Button();
 		button.setText("Click me");
+
+		button.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("clicked checkout");
+			}
+		});
 
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
