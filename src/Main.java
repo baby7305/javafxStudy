@@ -17,6 +17,9 @@ public class Main extends Application {
 
 		button = new Button();
 		button.setText("Click me");
+		button.setOnAction(x -> {
+			new AlertBox().display("Alert title", "wow message");
+		});
 
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
@@ -24,6 +27,5 @@ public class Main extends Application {
 		Scene scene = new Scene(layout, 300, 250);
 		primaryStage.setScene(scene);
 		primaryStage.show();
-
 	}
 }
