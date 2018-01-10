@@ -18,7 +18,8 @@ public class Main extends Application {
 		button = new Button();
 		button.setText("Click me");
 		button.setOnAction(x -> {
-			new AlertBox().display("Alert title", "wow message");
+			boolean result = new ConfirmBox().display("title of window", "are you want to sent result");
+			System.out.println(result);
 		});
 
 		StackPane layout = new StackPane();
