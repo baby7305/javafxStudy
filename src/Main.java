@@ -5,6 +5,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	Stage window;
 	Button button;
 
 	public static void main(String[] args) {
@@ -13,13 +14,16 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Title of the window");
+		window = primaryStage;
+		window.setTitle("JavaFx Study");
+		window.setOnCloseRequest(x->{
+			closeProgram();
+		});
 
 		button = new Button();
-		button.setText("Click me");
+		button.setText("close program");
 		button.setOnAction(x -> {
-			boolean result = new ConfirmBox().display("title of window", "are you want to sent result");
-			System.out.println(result);
+			closeProgram();
 		});
 
 		StackPane layout = new StackPane();
@@ -28,5 +32,10 @@ public class Main extends Application {
 		Scene scene = new Scene(layout, 300, 250);
 		primaryStage.setScene(scene);
 		primaryStage.show();
+	}
+
+	public void closeProgram() {
+		System.out.println("File is saved");
+		window.close();
 	}
 }
