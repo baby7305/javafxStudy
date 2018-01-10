@@ -17,6 +17,7 @@ public class Main extends Application {
 		window = primaryStage;
 		window.setTitle("JavaFx Study");
 		window.setOnCloseRequest(x -> {
+			x.consume();
 			closeProgram();
 		});
 
