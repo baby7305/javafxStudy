@@ -16,7 +16,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
 		window.setTitle("JavaFx Study");
-		window.setOnCloseRequest(x->{
+		window.setOnCloseRequest(x -> {
 			closeProgram();
 		});
 
@@ -35,7 +35,9 @@ public class Main extends Application {
 	}
 
 	public void closeProgram() {
-		System.out.println("File is saved");
-		window.close();
+		Boolean answer = new ConfirmBox().display("Exit", "Sure you want to exit");
+		if (answer) {
+			window.close();
+		}
 	}
 }
