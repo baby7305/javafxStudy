@@ -1,12 +1,13 @@
 import javafx.application.Application;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	Button button;
-
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -15,13 +16,25 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Title of the window");
 
-		button = new Button();
-		button.setText("Click me");
+		GridPane gridPane = new GridPane();
+		gridPane.setPadding(new Insets(10, 10, 10, 10));
+		gridPane.setVgap(8);
+		gridPane.setHgap(10);
 
-		StackPane layout = new StackPane();
-		layout.getChildren().add(button);
+		Label nameLabel = new Label("Username:");
+		GridPane.setConstraints(nameLabel, 0, 0);
+		TextField nameInput = new TextField("Bucky");
+		GridPane.setConstraints(nameInput, 1, 0);
+		Label passLabel = new Label("Password:");
+		GridPane.setConstraints(passLabel, 0, 1);
+		TextField passInput = new TextField("");
+		passInput.setPromptText("password");
+		GridPane.setConstraints(passInput,1,1);
+		Button loginButton = new Button("Log In");
+		GridPane.setConstraints(loginButton, 1, 2);
+		gridPane.getChildren().addAll(nameLabel, nameInput, passLabel, passInput, loginButton);
 
-		Scene scene = new Scene(layout, 300, 250);
+		Scene scene = new Scene(gridPane, 300, 250);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
