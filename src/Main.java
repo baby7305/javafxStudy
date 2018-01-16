@@ -31,7 +31,10 @@ public class Main extends Application {
 		//Set a default value
 		choiceBox.setValue("Apples");
 
-		button.setOnAction(e -> getChoice(choiceBox));
+		choiceBox.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+			System.out.println(oldValue + "\t" + newValue);
+		});
+
 
 		VBox layout = new VBox(10);
 		layout.setPadding(new Insets(20, 20, 20, 20));
@@ -40,12 +43,6 @@ public class Main extends Application {
 		scene = new Scene(layout, 300, 250);
 		window.setScene(scene);
 		window.show();
-	}
-
-	//To get the value of the selected item
-	private void getChoice(ChoiceBox<String> choiceBox){
-		String food = choiceBox.getValue();
-		System.out.println(food);
 	}
 
 }
