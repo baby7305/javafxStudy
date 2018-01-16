@@ -28,6 +28,7 @@ public class Main extends Application {
 		);
 
 		comboBox.setPromptText("What is your favorite movie?");
+		comboBox.setEditable(true);
 
 		//ComboBoxes also generate actions if you need to get value instantly
 		comboBox.setOnAction(e -> System.out.println("User selected " + comboBox.getValue()));
