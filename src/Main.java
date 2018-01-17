@@ -5,6 +5,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	Stage window;
 	Button button;
 
 	public static void main(String[] args) {
@@ -13,17 +14,24 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Title of the window");
+		window = primaryStage;
+		window.setTitle("thenewboston");
 
-		button = new Button();
-		button.setText("Click me");
+		Person bucky = new Person();
+
+		bucky.firstNameProperty().addListener( (v, oldValue, newValue) -> {
+			System.out.println("Name changed to " + newValue);
+			System.out.println("firstNameProperty(): " + bucky.firstNameProperty());
+			System.out.println("getFirstName(): " + bucky.getFirstName());
+		});
+
+		button = new Button("Submit");
+		button.setOnAction(e -> bucky.setFirstName("Porky"));
 
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
-
 		Scene scene = new Scene(layout, 300, 250);
-		primaryStage.setScene(scene);
-		primaryStage.show();
-
+		window.setScene(scene);
+		window.show();
 	}
 }
